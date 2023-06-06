@@ -19,6 +19,7 @@ searchInputEl.addEventListener('blur', function(){
 
 // badge 효과
 const badgeEl = document.querySelector('header .badges');
+const toTopEl = document.querySelector('#to-top');
 
 window.addEventListener('scroll', _.throttle(function(){
     console.log(window.scrollY);
@@ -29,17 +30,30 @@ window.addEventListener('scroll', _.throttle(function(){
             opacity: 0,
             display: 'none'
         });
+        // 버튼 보이기!
+        gsap.to(toTopEl, .2, {
+            x: 0,
+        });
     }else {
         // 배지 보이기
         gsap.to(badgeEl, .6, {
             opacity: 1,
             display: 'block'
         });
-        
+        // 버튼 숨기기!
+        gsap.to(toTopEl, .2, {
+            x: 100,
+        });
     }
-
 },300)); // loadsh 라이브러리
 // .throttle(함수, 시간)
+
+// to-top버튼 누르면 맨 위로 가기
+toTopEl.addEventListener('click', function () {
+    gsap.to(window, .7, {
+        scrollTo:0,
+    });
+});
 
 
 // visual 영역 이미지 나오게
