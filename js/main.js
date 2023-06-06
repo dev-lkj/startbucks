@@ -80,6 +80,20 @@ new Swiper('.promotion .swiper', {
      },
 
 });
+// AWARDS 영역 다중 요소 슬라이드
+new Swiper('.awards .swiper', {
+   autoplay: true,
+   loop : true,
+   spaceBetween : 30,
+   slidesPerView :5,
+   navigation : {
+    prevEl : '.awards .swiper-prev',
+    nextEl : '.awards .swiper-next',
+   },
+
+});
+
+
 
 // 프로모션 토글 영역
 const promotionEl = document.querySelector('.promotion');
@@ -133,5 +147,11 @@ spyEls.forEach(function (spyEl) {
         }) // 스크롤시 화면에 보이는지 안보이는지 감시하는 역할
         .setClassToggle(spyEl, 'show') // 클래스를 넣었다 뺐다 해줌,
         .addTo(new ScrollMagic.Controller()); // addTo는 컨트롤러를 넣어주기 위한 것
-
 });
+
+
+// FOOTER 영역 날짜 올해 날짜로 갱신하기
+const thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear(); // 올해 숫자가 나옴 2023
+
+
