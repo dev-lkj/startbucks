@@ -120,3 +120,18 @@ function floatingObject (selector, delay, size) {
 floatingObject('.floating1', 1, 15);
 floatingObject('.floating2', .5, 15);
 floatingObject('.floating3', 1.5, 20);
+
+
+// scroll magic store find 영역
+const spyEls = document.querySelectorAll('section.scroll-spy');
+spyEls.forEach(function (spyEl) {
+    new ScrollMagic
+        .Scene({
+            triggerElement : spyEl, // 보여짐 여부를 감시할 요소를 지정
+            triggerHook : .8, // 80% 범위에서 트리거 되도록
+
+        }) // 스크롤시 화면에 보이는지 안보이는지 감시하는 역할
+        .setClassToggle(spyEl, 'show') // 클래스를 넣었다 뺐다 해줌,
+        .addTo(new ScrollMagic.Controller()); // addTo는 컨트롤러를 넣어주기 위한 것
+
+});
